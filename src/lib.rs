@@ -40,10 +40,10 @@ pub use core as _core;
 /// ```
 #[macro_export]
 macro_rules! opaque {
-    (
+    ($(
         $(#[$meta:meta])*
         $vis:vis struct $name:ident;
-    ) => {
+    )+) => {$(
         $(#[$meta])*
         #[repr(C)]
         $vis struct $name {
@@ -63,7 +63,7 @@ macro_rules! opaque {
             _marker:
                 $crate::_core::marker::PhantomData<(*mut u8, $crate::_core::marker::PhantomPinned)>,
         }
-    };
+    )+};
 }
 
 #[cfg(test)]
