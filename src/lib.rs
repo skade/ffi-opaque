@@ -3,6 +3,38 @@
 #[doc(hidden)]
 pub use core as _core;
 
+/// Creates a type capable of representing opaque structs
+/// in FFI situations.
+///
+/// The resulting type:
+/// * is zero-sized
+/// * cannot be constructed outside of the module it is defined in
+/// * has proper alignment
+/// * is `!Send`, `!Sync`, `!Unpin`
+/// * is FFI safe
+///
+/// ## Example
+///
+/// Given the following C headers:
+///
+/// ```c
+/// typedef struct leveldb_options_t leveldb_options_t;
+///
+/// leveldb_options_t* leveldb_options_create();
+/// ```
+///
+/// We can represent the opaque struct `leveldb_options_t` on the Rust
+/// side like this:
+///
+/// ```rust
+/// use ffi_opaque::opaque;
+///
+/// opaque!(leveldb_options_t);
+///
+/// extern "C" {
+///     pub fn leveldb_options_create() -> *mut leveldb_options_t;
+/// }
+/// ```
 #[macro_export]
 macro_rules! opaque {
     ($name:ident) => {
