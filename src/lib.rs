@@ -9,6 +9,13 @@ macro_rules! opaque {
 }
 
 #[cfg(test)]
-mod test {
+pub mod test {
     opaque!(leveldb_t);
+
+    static_assertions::assert_not_impl_all!(leveldb_t: Send, Sync, Unpin);
+
+    #[deny(improper_ctypes, warnings)]
+    extern "C" {
+        pub fn f(_: *const leveldb_t);
+    }
 }
