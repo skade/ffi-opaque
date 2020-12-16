@@ -32,7 +32,10 @@ It uses an opaque struct to avoid leaking structural details of its database opt
 ```rust
 use ffi_opaque::opaque;
 
-opaque!(leveldb_options_t);
+opaque! {
+    /// Documentation works too!
+    pub struct leveldb_options_t;
+}
 
 extern "C" {
     pub fn leveldb_options_create() -> *mut leveldb_options_t;
