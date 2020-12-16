@@ -12,7 +12,7 @@ macro_rules! opaque {
             //
             // In the future, this should refer to an extern type.
             // See https://github.com/rust-lang/rust/issues/43467.
-            _private: [u8; 0],
+            _data: [u8; 0],
 
             // Required for !Send & !Sync & !Unpin.
             //
@@ -21,7 +21,7 @@ macro_rules! opaque {
             //
             // - `PhantomPinned` is !Unpin. It must be in `PhantomData` because
             //   its memory representation is not considered FFI-safe.
-            _pointer_marker:
+            _marker:
                 $crate::_core::marker::PhantomData<(*mut u8, $crate::_core::marker::PhantomPinned)>,
         }
     };
