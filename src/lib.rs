@@ -3,7 +3,7 @@ macro_rules! opaque {
     ($name:ident) => {
         #[repr(C)]
         pub struct $name {
-            _private: [u8; 0]
+            _private: [*mut u8; 0]
         }
     };
 }
