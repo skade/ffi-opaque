@@ -49,5 +49,5 @@ MIT, see LICENSE file.
 
 ## Acklowledgements
 
-* David Tolnay (@dtolnay) for raising awareness of many subtle issues
-* Nikolai Vasquez (@nvzqz) for implementing the final type and an number of checks
+* [David Tolnay (@dtolnay)](https://github.com/dtolnay) for raising awareness of many subtle issues
+* [Nikolai Vasquez (@nvzqz)](https://github.com/nvzqz) for implementing the final type and a number of checks
