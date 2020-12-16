@@ -29,7 +29,10 @@ pub use core as _core;
 /// ```rust
 /// use ffi_opaque::opaque;
 ///
-/// opaque!(leveldb_options_t);
+/// opaque! {
+///     /// And we can document the type.
+///     pub struct leveldb_options_t;
+/// }
 ///
 /// extern "C" {
 ///     pub fn leveldb_options_create() -> *mut leveldb_options_t;
@@ -37,9 +40,13 @@ pub use core as _core;
 /// ```
 #[macro_export]
 macro_rules! opaque {
-    ($name:ident) => {
+    (
+        $(#[$meta:meta])*
+        $vis:vis struct $name:ident;
+    ) => {
+        $(#[$meta])*
         #[repr(C)]
-        pub struct $name {
+        $vis struct $name {
             // Required for FFI-safe 0-sized type.
             //
             // In the future, this should refer to an extern type.
@@ -61,7 +68,9 @@ macro_rules! opaque {
 
 #[cfg(test)]
 pub mod test {
-    opaque!(test_t);
+    opaque! {
+        pub struct test_t;
+    }
 
     static_assertions::assert_not_impl_any!(test_t: Send, Sync, Unpin);
 
