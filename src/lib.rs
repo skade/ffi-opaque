@@ -33,6 +33,9 @@ pub mod test {
 
     static_assertions::assert_not_impl_any!(test_t: Send, Sync, Unpin);
 
+    static_assertions::assert_eq_size!(test_t, [u8; 0]);
+    static_assertions::assert_eq_align!(test_t, [u8; 0]);
+
     #[deny(improper_ctypes, warnings)]
     extern "C" {
         pub fn f(_: *const test_t);
