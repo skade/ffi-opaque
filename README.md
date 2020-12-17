@@ -23,22 +23,27 @@ Consider this example from the `leveldb` C API:
 
 ```c
 typedef struct leveldb_options_t leveldb_options_t;
+typedef struct leveldb_writeoptions_t leveldb_writeoptions_t;
 
 leveldb_options_t* leveldb_options_create();
+leveldb_writeoptions_t* leveldb_writeoptions_create();
 ```
 
-It uses an opaque struct to avoid leaking structural details of its database options to a library linking to it. We can represent the opaque struct `leveldb_options_t` on the Rust side like this:
+It uses an opaque struct to avoid leaking structural details of its database options to a library linking to it. We can represent the opaque structs on the Rust side like this:
 
 ```rust
 use ffi_opaque::opaque;
 
 opaque! {
-    /// Documentation works too!
+    /// Documentation works!
     pub struct leveldb_options_t;
+    /// Options used when writing data
+    pub struct leveldb_writeoptions_t;
 }
 
 extern "C" {
     pub fn leveldb_options_create() -> *mut leveldb_options_t;
+    pub fn leveldb_writeoptions_create() -> *mut leveldb_writeoptions_t;
 }
 ```
 

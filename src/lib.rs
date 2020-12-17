@@ -3,7 +3,7 @@
 #[doc(hidden)]
 pub use core as _core;
 
-/// Creates a type capable of representing opaque structs
+/// Creates one or more types capable of representing opaque structs
 /// in FFI situations.
 ///
 /// The resulting type:
@@ -36,6 +36,21 @@ pub use core as _core;
 ///
 /// extern "C" {
 ///     pub fn leveldb_options_create() -> *mut leveldb_options_t;
+/// }
+/// ```
+///
+/// ## Example 2
+///
+/// Multiple definitions are possible:
+///
+/// ```rust
+/// use ffi_opaque::opaque;
+///
+/// opaque! {
+///     /// Documentation for type_1;
+///     pub struct type_1;
+///     /// Documentation for type_2;
+///     pub struct type_2;
 /// }
 /// ```
 #[macro_export]
