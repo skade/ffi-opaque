@@ -1,7 +1,7 @@
 [package]
 name = "ffi-opaque"
 version = "2.0.0"
-authors = ["Florian Gilcher <florian.gilcher@asquera.de>"]
+authors = ["Florian Gilcher <florian.gilcher@asquera.de>", "Nikolai Vazquez <hello@nikolaivazquez.com>"]
 edition = "2018"
 license = "MIT"
 description = "A simple macro to create correct opaque pointers."
