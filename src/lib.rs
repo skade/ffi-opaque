@@ -7,7 +7,6 @@ pub use core as _core;
 /// in FFI situations.
 ///
 /// The resulting type:
-/// * is zero-sized
 /// * cannot be constructed outside of the module it is defined in
 /// * has proper alignment
 /// * is `!Send`, `!Sync`, `!Unpin`
