@@ -8,7 +8,7 @@ pub use core as _core;
 ///
 /// The resulting type:
 /// * cannot be constructed outside of the module it is defined in
-/// * has proper alignment
+/// * ensures proper pointer alignment
 /// * is `!Send`, `!Sync`, `!Unpin`
 /// * is FFI safe
 ///
