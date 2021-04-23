@@ -6,6 +6,8 @@ edition = "2018"
 license = "MIT"
 description = "A simple macro to create correct opaque pointers."
 documentation = "https://docs.rs/ffi-opaque/"
+homepage = "https://github.com/skade/ffi-opaque"
+repository = "https://github.com/skade/ffi-opaque"
 keywords = ["ffi", "macro", "safety"]
 categories = ["development-tools::ffi"]
 
